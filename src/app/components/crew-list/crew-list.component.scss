@@ -1,0 +1,16 @@
+.crew-list-container {
+    .header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+  
+    .crew-table {
+      width: 100%;
+    }
+  
+    .mat-column-actions {
+      width: 80px;
+    }
+  }
