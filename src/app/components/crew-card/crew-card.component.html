@@ -1,0 +1,38 @@
+<mat-tab-group>
+    <mat-tab [label]=" 'CREW_CARD.TITLE' | translate ">
+      <div class="crew-details">
+        <p><strong>{{ 'CREW_CARD.FIRST_NAME' | translate }} :</strong> {{ crew?.firstName }}</p>
+        <p><strong>{{ 'CREW_CARD.LAST_NAME' | translate }} :</strong> {{ crew?.lastName }}</p>
+        <p><strong>{{ 'CREW_CARD.NATIONALITY' | translate }} :</strong> {{ crew?.nationality }}</p>
+        <p><strong>{{ 'CREW_CARD.TITLE' | translate }} :</strong> {{ crew?.title }}</p>
+        <p><strong>{{ 'CREW_CARD.DAYS_ON_BOARD' | translate }} :</strong> {{ crew?.daysOnBoard }}</p>
+        <p><strong>{{ 'CREW_CARD.DAILY_RATE' | translate }} :</strong> {{ crew?.dailyRate }}</p>
+        <p><strong>{{ 'CREW_CARD.CURRENCY' | translate }} :</strong> {{ crew?.currency }}</p>
+        <p><strong>{{ 'CREW_CARD.TOTAL_INCOME' | translate }} :</strong> {{ getTotalIncome() }} {{ crew?.currency }}</p>
+      </div>
+    </mat-tab>
+
+    <mat-tab [label]=" 'CREW_CARD.CERTIFICATES' | translate ">
+      <div *ngIf="crew?.certificates?.length; else noCertificates">
+        <table mat-table [dataSource]="crew?.certificates" class="mat-elevation-z8">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>{{ 'CERTIFICATE.NAME' | translate }}</th>
+            <td mat-cell *matCellDef="let cert"> {{ cert.name }} </td>
+          </ng-container>
+          <ng-container matColumnDef="issuedDate">
+            <th mat-header-cell *matHeaderCellDef>{{ 'CERTIFICATE.ISSUE_DATE' | translate }}</th>
+            <td mat-cell *matCellDef="let cert"> {{ cert.issuedDate | date }} </td>
+          </ng-container>
+          <ng-container matColumnDef="expiryDate">
+            <th mat-header-cell *matHeaderCellDef>{{ 'CERTIFICATE.EXPIRY_DATE' | translate }}</th>
+            <td mat-cell *matCellDef="let cert"> {{ cert.expiryDate | date }} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="['name', 'issuedDate', 'expiryDate']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['name', 'issuedDate', 'expiryDate'];"></tr>
+        </table>
+      </div>
+      <ng-template #noCertificates>
+        <p>{{ 'CERTIFICATE.NO_CERTIFICATES' | translate }}</p>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>

@@ -48,6 +48,7 @@
       "BACK": "Back to List"
     },
     "CERTIFICATE": {
+      "NAME": "Name",
       "TYPE": "Certificate Type",
       "ISSUE_DATE": "Issue Date",
       "EXPIRY_DATE": "Expiry Date",

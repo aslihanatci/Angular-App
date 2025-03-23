@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LanguageService } from '../../services/language.service';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { NgFor, CommonModule } from '@angular/common'; 
 
 @Component({
@@ -9,8 +9,7 @@ import { NgFor, CommonModule } from '@angular/common';
   imports: [
     MatIconModule,
     MatMenuModule,
-    CommonModule,
-    MatMenuTrigger
+    CommonModule
   ],
   templateUrl: './language-selector.component.html',
   styleUrl: './language-selector.component.scss'
