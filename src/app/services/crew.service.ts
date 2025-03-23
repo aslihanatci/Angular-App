@@ -116,5 +116,9 @@ export class CrewService {
     this.crewSubject.next(crews.filter(c => c.id !== id));
   }
 
+  calculateTotalIncome(crew: Crew): number {
+    return crew.daysOnBoard * crew.dailyRate;
+  }
+
 
 }

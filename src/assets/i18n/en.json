@@ -1,0 +1,71 @@
+{
+    "HEADER": {
+      "TITLE": "Ship Crew Management"
+    },
+    "CREW_LIST": {
+      "TITLE": "Crew List",
+      "ADD_CREW": "Add Crew",
+      "FIRST_NAME": "First Name",
+      "LAST_NAME": "Last Name",
+      "NATIONALITY": "Nationality",
+      "DAYS_ON_BOARD": "Days On Board",
+      "DAILY_RATE": "Daily Rate",
+      "CURRENCY": "Currency",
+      "TOTAL_INCOME": "Total Income",
+      "CERTIFICATES": "Certificates",
+      "ACTIONS": "Actions",
+      "EDIT": "Edit",
+      "DELETE": "Delete",
+      "VIEW_CARD": "View Card",
+      "TOTALS": "Totals"
+    },
+    "CREW_FORM": {
+      "ADD_TITLE": "Add New Crew Member",
+      "EDIT_TITLE": "Edit Crew Member",
+      "FIRST_NAME": "First Name",
+      "LAST_NAME": "Last Name",
+      "NATIONALITY": "Nationality",
+      "TITLE": "Title",
+      "DAYS_ON_BOARD": "Days On Board",
+      "DAILY_RATE": "Daily Rate",
+      "CURRENCY": "Currency",
+      "CERTIFICATES": "Certificates",
+      "ADD_CERTIFICATE": "Add Certificate",
+      "SAVE": "Save",
+      "CANCEL": "Cancel"
+    },
+    "CREW_CARD": {
+      "TITLE": "Crew Card",
+      "CREW_INFO": "Crew Information",
+      "CERTIFICATES": "Certificates",
+      "FIRST_NAME": "First Name",
+      "LAST_NAME": "Last Name",
+      "NATIONALITY": "Nationality",
+      "DAYS_ON_BOARD": "Days On Board",
+      "DAILY_RATE": "Daily Rate",
+      "CURRENCY": "Currency",
+      "TOTAL_INCOME": "Total Income",
+      "BACK": "Back to List"
+    },
+    "CERTIFICATE": {
+      "TYPE": "Certificate Type",
+      "ISSUE_DATE": "Issue Date",
+      "EXPIRY_DATE": "Expiry Date",
+      "NO_CERTIFICATES": "No certificates available"
+    },
+    "CERTIFICATE_TYPE": {  
+      "TITLE": "Certificate Types",
+      "ADD": "Add Certificate Type",
+      "NAME": "Name",
+      "DESCRIPTION": "Description",
+      "SAVE": "Save",
+      "CANCEL": "Cancel"
+    },
+    "COMMON": {
+      "CONFIRM": "Confirm",
+      "CANCEL": "Cancel",
+      "DELETE_CONFIRM": "Are you sure you want to delete this item?",
+      "YES": "Yes",
+      "NO": "No"
+    }
+  }

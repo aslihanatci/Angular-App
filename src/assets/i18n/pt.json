@@ -1,0 +1,70 @@
+{
+    "HEADER": {
+      "TITLE": "Gestão de Tripulação"
+    },
+    "CREW_LIST": {
+      "TITLE": "Lista de Tripulação",
+      "ADD_CREW": "Adicionar Tripulante",
+      "FIRST_NAME": "Nome",
+      "LAST_NAME": "Sobrenome",
+      "NATIONALITY": "Nacionalidade",
+      "DAYS_ON_BOARD": "Dias a Bordo",
+      "DAILY_RATE": "Taxa Diária",
+      "CURRENCY": "Moeda",
+      "TOTAL_INCOME": "Rendimento Total",
+      "CERTIFICATES": "Certificados",
+      "ACTIONS": "Ações",
+      "EDIT": "Editar",
+      "DELETE": "Excluir",
+      "VIEW_CARD": "Ver Cartão",
+      "TOTALS": "Totais"
+    },
+    "CREW_FORM": {
+      "ADD_TITLE": "Adicionar Novo Tripulante",
+      "EDIT_TITLE": "Editar Tripulante",
+      "FIRST_NAME": "Nome",
+      "LAST_NAME": "Sobrenome",
+      "NATIONALITY": "Nacionalidade",
+      "DAYS_ON_BOARD": "Dias a Bordo",
+      "DAILY_RATE": "Taxa Diária",
+      "CURRENCY": "Moeda",
+      "CERTIFICATES": "Certificados",
+      "ADD_CERTIFICATE": "Adicionar Certificado",
+      "SAVE": "Salvar",
+      "CANCEL": "Cancelar"
+    },
+    "CREW_CARD": {
+      "TITLE": "Cartão de Tripulante",
+      "CREW_INFO": "Informações do Tripulante",
+      "CERTIFICATES": "Certificados",
+      "FIRST_NAME": "Nome",
+      "LAST_NAME": "Sobrenome",
+      "NATIONALITY": "Nacionalidade",
+      "DAYS_ON_BOARD": "Dias a Bordo",
+      "DAILY_RATE": "Taxa Diária",
+      "CURRENCY": "Moeda",
+      "TOTAL_INCOME": "Rendimento Total",
+      "BACK": "Voltar à Lista"
+    },
+    "CERTIFICATE": {
+      "TYPE": "Tipo de Certificado",
+      "ISSUE_DATE": "Data de Emissão",
+      "EXPIRY_DATE": "Data de Expiração",
+      "NO_CERTIFICATES": "Nenhum certificado disponível"
+    },
+    "CERTIFICATE_TYPE": {  
+      "TITLE": "Tipos de Certificado",
+      "ADD": "Adicionar Tipo de Certificado",
+      "NAME": "Nome",
+      "DESCRIPTION": "Descrição",
+      "SAVE": "Salvar",
+      "CANCEL": "Cancelar"
+    },
+    "COMMON": {
+      "CONFIRM": "Confirmar",
+      "CANCEL": "Cancelar",
+      "DELETE_CONFIRM": "Tem certeza que deseja excluir este item?",
+      "YES": "Sim",
+      "NO": "Não"
+    }
+  }

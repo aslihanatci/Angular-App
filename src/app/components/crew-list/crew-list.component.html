@@ -1,91 +1,82 @@
 <div class="crew-list-container">
     <div class="header-actions">
-      <h2>Gemi Tayfası Listesi</h2>
+      <h2>{{ 'CREW_LIST.TITLE' | translate }}</h2>
       <button mat-raised-button color="primary" >
-        <mat-icon>add</mat-icon> Yeni Tayfa Ekle
+        <mat-icon>add</mat-icon>
+        {{ 'CREW_LIST.ADD_CREW' | translate }}
       </button>
     </div>
   
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort class="crew-table">
-        
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> İşlemler </th>
-        <td mat-cell *matCellDef="let crew">
-          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Actions">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <a mat-menu-item [routerLink]="['/crew', crew.id]">
-              <mat-icon>visibility</mat-icon>
-              <span>Detay Görüntüle</span>
-            </a>
-            <button mat-menu-item (click)="openDialog(crew)">
-              <mat-icon>edit</mat-icon>
-              <span>Düzenle</span>
-            </button>
-            <button mat-menu-item (click)="confirmDelete(crew)">
-              <mat-icon>delete</mat-icon>
-              <span>Sil</span>
-            </button>
-          </mat-menu>
-        </td>
-      </ng-container>
-  
-        <!-- First Name Column -->
+          
         <ng-container matColumnDef="firstName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ad </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CREW_LIST.FIRST_NAME' | translate }}</th>
           <td mat-cell *matCellDef="let crew"> {{crew.firstName}} </td>
         </ng-container>
   
-        <!-- Last Name Column -->
         <ng-container matColumnDef="lastName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Soyad </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CREW_LIST.LAST_NAME' | translate }}</th>
           <td mat-cell *matCellDef="let crew"> {{crew.lastName}} </td>
         </ng-container>
   
-        <!-- Nationality Column -->
         <ng-container matColumnDef="nationality">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Uyruk </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'CREW_LIST.NATIONALITY' | translate }}</th>
           <td mat-cell *matCellDef="let crew"> {{crew.nationality}} </td>
         </ng-container>
   
-        <!-- Title Column -->
         <ng-container matColumnDef="title">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Unvan </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CREW_LIST.TITLE' | translate }}</th>
           <td mat-cell *matCellDef="let crew"> {{crew.title}} </td>
         </ng-container>
   
-        <!-- Days On Board Column -->
         <ng-container matColumnDef="daysOnBoard">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Gemide Geçirilen Gün </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CREW_LIST.DAYS_ON_BOARD' | translate }}</th>
           <td mat-cell *matCellDef="let crew"> {{crew.daysOnBoard}} </td>
         </ng-container>
   
-        <!-- Daily Rate Column -->
         <ng-container matColumnDef="dailyRate">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Günlük Ücret </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CREW_LIST.DAILY_RATE' | translate }}</th>
           <td mat-cell *matCellDef="let crew"> {{crew.dailyRate}} </td>
         </ng-container>
   
-        <!-- Currency Column -->
         <ng-container matColumnDef="currency">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Para Birimi </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'CREW_LIST.CURRENCY' | translate }} </th>
           <td mat-cell *matCellDef="let crew"> {{crew.currency}} </td>
         </ng-container>
   
-        <!-- Total Income Column -->
-        <!-- <ng-container matColumnDef="totalIncome">
-          <th mat-header-cell *matHeaderCellDef> Toplam Kazanç </th>
+        <ng-container matColumnDef="totalIncome">
+          <th mat-header-cell *matHeaderCellDef> {{ 'CREW_LIST.TOTAL_INCOME' | translate }}</th>
           <td mat-cell *matCellDef="let crew"> {{getTotalIncome(crew)}} {{crew.currency}} </td>
-        </ng-container> -->
-  
-        <!-- Certificates Column -->
+        </ng-container>
+
         <ng-container matColumnDef="certificates">
-          <th mat-header-cell *matHeaderCellDef> Sertifikalar </th>
+          <th mat-header-cell *matHeaderCellDef>{{ 'CREW_LIST.CERTIFICATES' | translate }}</th>
           <td mat-cell *matCellDef="let crew"> {{getCertificateCount(crew)}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>{{ 'CREW_LIST.ACTIONS' | translate }}</th>
+            <td mat-cell *matCellDef="let crew">
+              <button mat-icon-button [matMenuTriggerFor]="menu"#menuTrigger="matMenuTrigger"  aria-label="Actions">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <a mat-menu-item [routerLink]="['/crew', crew.id]">
+                  <mat-icon>visibility</mat-icon>
+                  <span>{{ 'CREW_LIST.VIEW_CARD' | translate }}</span>
+                </a>
+                <button mat-menu-item (click)="openDialog(crew)">
+                  <mat-icon>edit</mat-icon>
+                  <span>{{ 'CREW_LIST.EDIT' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="confirmDelete(crew)">
+                  <mat-icon>delete</mat-icon>
+                  <span>{{ 'CREW_LIST.DELETE' | translate }}</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

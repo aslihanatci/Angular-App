@@ -31,8 +31,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-
-  ],
+    AppComponent,
+    CrewListComponent
+ ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -53,9 +54,7 @@ const routes: Routes = [
     MatCardModule,
     MatListModule,
     MatMenuModule,
-    MatSnackBarModule,
-    AppComponent,
-    CrewListComponent
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

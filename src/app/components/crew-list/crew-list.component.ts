@@ -11,6 +11,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-crew-list',
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
     MatSort,
     MatIconModule,
     MatMenuModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.scss'
@@ -54,6 +56,9 @@ export class CrewListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  getTotalIncome(crew: Crew): number {
+    return this.crewService.calculateTotalIncome(crew);
+  }
 
   getCertificateCount(crew: Crew): number {
     return crew.certificates!.length;

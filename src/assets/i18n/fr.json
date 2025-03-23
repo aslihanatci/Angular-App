@@ -1,0 +1,71 @@
+{
+    "HEADER": {
+      "TITLE": "Gestion de l'Équipage"
+    },
+    "CREW_LIST": {
+      "TITLE": "Liste de l'Équipage",
+      "ADD_CREW": "Ajouter un Membre",
+      "FIRST_NAME": "Prénom",
+      "LAST_NAME": "Nom de famille",
+      "NATIONALITY": "Nationalité",
+      "DAYS_ON_BOARD": "Jours à Bord",
+      "DAILY_RATE": "Taux Journalier",
+      "CURRENCY": "Devise",
+      "TOTAL_INCOME": "Revenu Total",
+      "CERTIFICATES": "Certificats",
+      "ACTIONS": "Actions",
+      "EDIT": "Modifier",
+      "DELETE": "Supprimer",
+      "VIEW_CARD": "Voir la Carte",
+      "TOTALS": "Totaux"
+    },
+    "CREW_FORM": {
+      "ADD_TITLE": "Ajouter un Nouveau Membre d'Équipage",
+      "EDIT_TITLE": "Modifier le Membre d'Équipage",
+      "FIRST_NAME": "Prénom",
+      "LAST_NAME": "Nom de famille",
+      "NATIONALITY": "Nationalité",
+      "TITLE": "Titre",
+      "DAYS_ON_BOARD": "Jours à Bord",
+      "DAILY_RATE": "Taux Journalier",
+      "CURRENCY": "Devise",
+      "CERTIFICATES": "Certificats",
+      "ADD_CERTIFICATE": "Ajouter un Certificat",
+      "SAVE": "Enregistrer",
+      "CANCEL": "Annuler"
+    },
+    "CREW_CARD": {
+      "TITLE": "Carte d'Équipage",
+      "CREW_INFO": "Informations sur l'Équipage",
+      "CERTIFICATES": "Certificats",
+      "FIRST_NAME": "Prénom",
+      "LAST_NAME": "Nom de famille",
+      "NATIONALITY": "Nationalité",
+      "DAYS_ON_BOARD": "Jours à Bord",
+      "DAILY_RATE": "Taux Journalier",
+      "CURRENCY": "Devise",
+      "TOTAL_INCOME": "Revenu Total",
+      "BACK": "Retour à la Liste"
+    },
+    "CERTIFICATE": {
+      "TYPE": "Type de Certificat",
+      "ISSUE_DATE": "Date d'Émission",
+      "EXPIRY_DATE": "Date d'Expiration",
+      "NO_CERTIFICATES": "Aucun certificat disponible"
+    },
+    "CERTIFICATE_TYPE": {  
+      "TITLE": "Types de Certificat",
+      "ADD": "Ajouter un Type de Certificat",
+      "NAME": "Nom",
+      "DESCRIPTION": "Description",
+      "SAVE": "Enregistrer",
+      "CANCEL": "Annuler"
+    },
+    "COMMON": {
+      "CONFIRM": "Confirmer",
+      "CANCEL": "Annuler",
+      "DELETE_CONFIRM": "Êtes-vous sûr de vouloir supprimer cet élément?",
+      "YES": "Oui",
+      "NO": "Non"
+    }
+  }
