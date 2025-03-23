@@ -4,6 +4,7 @@ import { LanguageSelectorComponent } from "../language-selector/language-selecto
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
     LanguageSelectorComponent, 
     MatToolbarModule,
     TranslateModule,
-    RouterModule
+    RouterModule,
+    MatButtonModule 
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

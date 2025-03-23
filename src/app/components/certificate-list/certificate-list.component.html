@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>{{ 'CREW_CARD.CERTIFICATES' | translate }}</h2>
+<mat-dialog-content>
+  <div *ngIf="certificates.length === 0" class="no-certificates">
+    {{ 'CERTIFICATE.NO_CERTIFICATES' | translate }}
+  </div>
+  <table mat-table [dataSource]="certificates" class="full-width" *ngIf="certificates.length > 0">
+    <!-- Certificate Type Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>{{ 'CERTIFICATE.TYPE' | translate }}</th>
+      <td mat-cell *matCellDef="let cert">{{ cert.certificateTypeName }}</td>
+    </ng-container>
+
+    <!-- Issue Date Column -->
+    <ng-container matColumnDef="issueDate">
+      <th mat-header-cell *matHeaderCellDef>{{ 'CERTIFICATE.ISSUE_DATE' | translate }}</th>
+      <td mat-cell *matCellDef="let cert">{{ cert.issueDate | date }}</td>
+    </ng-container>
+
+    <!-- Expiry Date Column -->
+    <ng-container matColumnDef="expiryDate">
+      <th mat-header-cell *matHeaderCellDef>{{ 'CERTIFICATE.EXPIRY_DATE' | translate }}</th>
+      <td mat-cell *matCellDef="let cert">{{ cert.expiryDate | date }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>{{ 'COMMON.CANCEL' | translate }}</button>
+</mat-dialog-actions>

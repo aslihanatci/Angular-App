@@ -1,0 +1,93 @@
+<h2 mat-dialog-title>
+    {{ (data.crew ? 'CREW_FORM.EDIT_TITLE' : 'CREW_FORM.ADD_TITLE') | translate }}
+  </h2>
+  <mat-dialog-content>
+    <form [formGroup]="crewForm" class="crew-form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'CREW_FORM.FIRST_NAME' | translate }}</mat-label>
+        <input matInput formControlName="firstName" required>
+        <mat-error *ngIf="crewForm.get('firstName')?.hasError('required')">
+          {{ 'CREW_FORM.FIRST_NAME' | translate }} is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'CREW_FORM.LAST_NAME' | translate }}</mat-label>
+        <input matInput formControlName="lastName" required>
+        <mat-error *ngIf="crewForm.get('lastName')?.hasError('required')">
+          {{ 'CREW_FORM.LAST_NAME' | translate }} is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'CREW_FORM.NATIONALITY' | translate }}</mat-label>
+        <input matInput formControlName="nationality" required>
+        <mat-error *ngIf="crewForm.get('nationality')?.hasError('required')">
+          {{ 'CREW_FORM.NATIONALITY' | translate }} is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'CREW_FORM.TITLE' | translate }}</mat-label>
+        <input matInput formControlName="title" required>
+        <mat-error *ngIf="crewForm.get('title')?.hasError('required')">
+          {{ 'CREW_FORM.TITLE' | translate }} is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'CREW_FORM.DAYS_ON_BOARD' | translate }}</mat-label>
+        <input matInput formControlName="daysOnBoard" type="number" min="1" required>
+        <mat-error *ngIf="crewForm.get('daysOnBoard')?.hasError('required')">
+          {{ 'CREW_FORM.DAYS_ON_BOARD' | translate }} is required
+        </mat-error>
+        <mat-error *ngIf="crewForm.get('daysOnBoard')?.hasError('min')">
+          {{ 'CREW_FORM.DAYS_ON_BOARD' | translate }} must be a positive number
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'CREW_FORM.DAILY_RATE' | translate }}</mat-label>
+        <input matInput formControlName="dailyRate" type="number" min="1" required>
+        <mat-error *ngIf="crewForm.get('dailyRate')?.hasError('required')">
+          {{ 'CREW_FORM.DAILY_RATE' | translate }} is required
+        </mat-error>
+        <mat-error *ngIf="crewForm.get('dailyRate')?.hasError('min')">
+          {{ 'CREW_FORM.DAILY_RATE' | translate }} must be a positive number
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>{{ 'CREW_FORM.CURRENCY' | translate }}</mat-label>
+        <mat-select formControlName="currency" required>
+          <mat-option value="USD">USD</mat-option>
+          <mat-option value="EUR">EUR</mat-option>
+        </mat-select>
+        <mat-error *ngIf="crewForm.get('currency')?.hasError('required')">
+          {{ 'CREW_FORM.CURRENCY' | translate }} is required
+        </mat-error>
+      </mat-form-field>
+      
+      <!-- Sertifikalar Bölümü -->
+      <div *ngIf="certificates.length > 0">
+        <h3>{{ 'CREW_FORM.CERTIFICATES' | translate }}</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let cert of certificates">
+            {{ cert.certificateTypeName || 'Certificate' }} - 
+            {{ cert.issueDate | date }} to {{ cert.expiryDate | date }}
+          </mat-list-item>
+        </mat-list>
+      </div>
+      
+      <button mat-raised-button color="primary" type="button" (click)="addCertificate()" class="mt-3">
+        <mat-icon>add</mat-icon>
+        {{ 'CREW_FORM.ADD_CERTIFICATE' | translate }}
+      </button>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>{{ 'CREW_FORM.CANCEL' | translate }}</button>
+    <button mat-raised-button color="primary" [disabled]="crewForm.invalid" (click)="save()">
+      {{ 'CREW_FORM.SAVE' | translate }}
+    </button>
+  </mat-dialog-actions>

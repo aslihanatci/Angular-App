@@ -1,7 +1,7 @@
 <div class="crew-list-container">
     <div class="header-actions">
       <h2>{{ 'CREW_LIST.TITLE' | translate }}</h2>
-      <button mat-raised-button color="primary" >
+      <button mat-raised-button color="primary" (click)="openCrewForm()" >
         <mat-icon>add</mat-icon>
         {{ 'CREW_LIST.ADD_CREW' | translate }}
       </button>
@@ -66,7 +66,7 @@
                   <mat-icon>visibility</mat-icon>
                   <span>{{ 'CREW_LIST.VIEW_CARD' | translate }}</span>
                 </a>
-                <button mat-menu-item (click)="openDialog(crew)">
+                <button mat-menu-item (click)="openCrewForm(crew)">
                   <mat-icon>edit</mat-icon>
                   <span>{{ 'CREW_LIST.EDIT' | translate }}</span>
                 </button>
