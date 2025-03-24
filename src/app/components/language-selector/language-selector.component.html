@@ -1,13 +1,8 @@
 <div class="language-selector">
-    <button (click)="toggleDropdown()" class="language-btn">
-      {{ getCurrentLanguageName() }}
-    </button>
-    
-    <div *ngIf="isDropdownOpen" class="language-dropdown">
-      <div *ngFor="let lang of languageService.availableLanguages" 
-           class="language-option"
-           (click)="changeLanguage(lang.code)">
-        {{ lang.name }}
-      </div>
-    </div>
+      <mat-select [value]="languageService.getCurrentLanguage()" (selectionChange)="changeLanguage($event.value)">
+        <mat-option *ngFor="let lang of languageService.availableLanguages" [value]="lang.code">
+          {{ lang.name }}
+        </mat-option>
+      </mat-select>
+
   </div>

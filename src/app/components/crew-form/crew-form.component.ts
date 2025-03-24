@@ -35,6 +35,9 @@ export class CrewFormComponent implements OnInit {
   @Input() crewData: any;
   crewForm: FormGroup;
   certificates: Certificate[] = [];
+  titles: string[] = ['Captain', 'First Officer', 'Engineer', 'Deckhand', 'Steward'];
+  nationalities: string[] = ['United States', 'United Kingdom', 'France', 'Germany', 'Spain', 'Italy', 'Turkey'];
+  currencies: string[] = ['USD', 'EUR', 'GBP', 'TRY'];
   constructor(
     private fb: FormBuilder,
     private crewService: CrewService,

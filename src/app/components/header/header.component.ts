@@ -5,7 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-header',
   imports: [
@@ -20,4 +20,5 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class HeaderComponent {
   constructor(private router: Router) {}
+
 }

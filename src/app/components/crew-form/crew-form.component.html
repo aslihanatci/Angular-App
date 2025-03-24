@@ -21,7 +21,9 @@
 
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>{{ 'CREW_FORM.NATIONALITY' | translate }}</mat-label>
-        <input matInput formControlName="nationality" required>
+        <mat-select formControlName="nationality" required>
+          <mat-option *ngFor="let country of nationalities" [value]="country">{{ country }}</mat-option>
+        </mat-select>
         <mat-error *ngIf="crewForm.get('nationality')?.hasError('required')">
           {{ 'CREW_FORM.NATIONALITY' | translate }} is required
         </mat-error>
@@ -29,7 +31,9 @@
 
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>{{ 'CREW_FORM.TITLE' | translate }}</mat-label>
-        <input matInput formControlName="title" required>
+        <mat-select formControlName="title" required>
+          <mat-option *ngFor="let title of titles" [value]="title">{{ title }}</mat-option>
+        </mat-select>
         <mat-error *ngIf="crewForm.get('title')?.hasError('required')">
           {{ 'CREW_FORM.TITLE' | translate }} is required
         </mat-error>
@@ -60,15 +64,13 @@
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>{{ 'CREW_FORM.CURRENCY' | translate }}</mat-label>
         <mat-select formControlName="currency" required>
-          <mat-option value="USD">USD</mat-option>
-          <mat-option value="EUR">EUR</mat-option>
+          <mat-option *ngFor="let currency of currencies" [value]="currency">{{ currency }}</mat-option>
         </mat-select>
         <mat-error *ngIf="crewForm.get('currency')?.hasError('required')">
           {{ 'CREW_FORM.CURRENCY' | translate }} is required
         </mat-error>
       </mat-form-field>
       
-      <!-- Sertifikalar Bölümü -->
       <div *ngIf="certificates.length > 0">
         <h3>{{ 'CREW_FORM.CERTIFICATES' | translate }}</h3>
         <mat-list>

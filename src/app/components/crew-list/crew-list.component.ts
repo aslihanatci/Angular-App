@@ -13,6 +13,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CrewFormComponent } from '../crew-form/crew-form.component';
+import { CertificateFormComponent } from '../certificate-form/certificate-form.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -23,6 +24,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { CertificateType } from '../../models/certificate-type';
+import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-crew-list',
@@ -88,17 +91,20 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   }
 
   confirmDelete(crew: Crew): void {
-    // const dialogRef = this.dialog.open(DeleteConfirmDialogComponent, {
-    //   width: '400px',
-    //   data: `${crew.firstName} ${crew.lastName}`
-    // });
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+      data: {
+        title: 'Silme Onayı',
+        message: 'Bu ekibi silmek istediğinizden emin misiniz?',
+      }
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.crewService.deleteCrew(crew.id);
-    //     this.snackBar.open('Tayfa başarıyla silindi.', 'Tamam', { duration: 3000 });
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.crewService.deleteCrew(crew.id!);
+        this.snackBar.open('Tayfa başarıyla silindi.', 'Tamam', { duration: 3000 });
+      }
+    });
   }
 
   openCrewForm(crew?: Crew): void {
@@ -107,38 +113,30 @@ export class CrewListComponent implements OnInit, AfterViewInit {
       data: { crew }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      // Form kapatıldıktan sonra yapılacak işlemler
-    });
-  }
-
-  openDialog(crew?: Crew): void {
-    // const dialogRef = this.dialog.open(CrewDialogComponent, {
-    //   width: '600px',
-    //   data: crew ? { ...crew } : {
-    //     id: 0,
-    //     firstName: '',
-    //     lastName: '',
-    //     nationality: '',
-    //     title: '',
-    //     daysOnBoard: 0,
-    //     dailyRate: 0,
-    //     currency: 'USD',
-    //     certificates: []
-    //   }
-    // });
-
     // dialogRef.afterClosed().subscribe(result => {
     //   if (result) {
     //     if (result.id === 0) {
-    //       this.crewService.addCrew(result);
-    //       this.snackBar.open('Tayfa başarıyla eklendi.', 'Tamam', { duration: 3000 });
+    //       // Yeni crew ekleniyor
+    //       this.crewService.addCrew(result).subscribe(() => {
+    //         this.snackBar.open('Tayfa başarıyla eklendi.', 'Tamam', { duration: 3000 });
+    //         this.loadCrewData();  // Yeni crew eklendikten sonra veriyi tekrar yükle
+    //       });
     //     } else {
-    //       this.crewService.updateCrew(result);
-    //       this.snackBar.open('Tayfa bilgileri güncellendi.', 'Tamam', { duration: 3000 });
+    //       // Var olan crew güncelleniyor
+    //       this.crewService.updateCrew(result).subscribe(() => {
+    //         this.snackBar.open('Tayfa bilgileri güncellendi.', 'Tamam', { duration: 3000 });
+    //         this.loadCrewData();  // Güncel verileri tekrar yükle
+    //       });
     //     }
     //   }
     // });
+  }
+
+  openCertificateForm(certificateType?: CertificateType): void {
+    const dialogRef = this.dialog.open(CertificateFormComponent, {
+      width: '600px',
+      data: { certificateType}
+    });
   }
 
 
