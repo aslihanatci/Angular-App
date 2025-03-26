@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CrewFormComponent } from '../crew-form/crew-form.component';
 import { CertificateFormComponent } from '../certificate-form/certificate-form.component';
+import { CertificateTypeFormComponent } from '../certificate-type-form/certificate-type-form.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -133,7 +134,7 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   }
 
   openCertificateForm(certificateType?: CertificateType): void {
-    const dialogRef = this.dialog.open(CertificateFormComponent, {
+    const dialogRef = this.dialog.open(CertificateTypeFormComponent, {
       width: '600px',
       data: { certificateType}
     });

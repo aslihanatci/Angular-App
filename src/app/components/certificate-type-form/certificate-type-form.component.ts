@@ -6,13 +6,14 @@ import { Certificate } from '../../models/certificate';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { CommonModule, AsyncPipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CertificateType } from '../../models/certificate-type';
 import { CertificateTypeService } from '../../services/certificate-type.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'certificate-type-form',
@@ -26,8 +27,7 @@ import { CertificateTypeService } from '../../services/certificate-type.service'
     MatSelectModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule,
-    AsyncPipe
+    MatButtonModule
   ],
   templateUrl: './certificate-type-form.component.html',
   styleUrl: './certificate-type-form.component.scss'
@@ -42,7 +42,7 @@ export class CertificateTypeFormComponent implements OnInit {
     private fb: FormBuilder,
     private certificateTypeService: CertificateTypeService,
     private dialog: MatDialog,
-    public dialogRef: MatDialogRef<CertificateFormComponent>,,
+    public dialogRef: MatDialogRef<CertificateTypeFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
 
   ) {

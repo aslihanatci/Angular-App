@@ -2,7 +2,7 @@
   {{ 'CERTIFICATE_TYPE.TITLE' | translate }}
 </h2>
 <mat-dialog-content>
-  <form [formGroup]="certificateTypeForm" class="crew-form">
+  <form [formGroup]="certificateTypeForm" class="certificate-type-form">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>{{ 'CERTIFICATE_TYPE.NAME' | translate }}</mat-label>
       <input matInput formControlName="name" required>
@@ -12,7 +12,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
-      <mat-label>{{ 'ERTIFICATE_TYPE.DESCRIPTION' | translate }}</mat-label>
+      <mat-label>{{ 'CERTIFICATE_TYPE.DESCRIPTION' | translate }}</mat-label>
       <input matInput formControlName="description" required>
       <mat-error *ngIf="certificateTypeForm.get('description')?.hasError('required')">
         {{ 'CERTIFICATE_TYPE.DESCRIPTION' | translate }} is required

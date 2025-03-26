@@ -1,0 +1,62 @@
+<div class="crew-list-container">
+    <div class="header-actions">
+      <h2>{{ 'CREW_LIST.TITLE' | translate }}</h2>
+      <div class="button-group">
+        <button mat-raised-button color="primary" (click)="openCertificateForm()" >
+          <mat-icon>add</mat-icon>
+          {{ 'CERTIFICATE_TYPE.ADD' | translate }}
+        </button>
+    </div>
+    </div>
+  
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort class="crew-table">
+          
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CERTIFICATE_TYPE.NAME' | translate }}</th>
+          <td mat-cell *matCellDef="let crew"> {{crew.firstName}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CERTIFICATE_TYPE.DESCRIPTION' | translate }}</th>
+          <td mat-cell *matCellDef="let crew"> {{crew.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>{{ 'CREW_LIST.ACTIONS' | translate }}</th>
+            <td mat-cell *matCellDef="let crew">
+              <button mat-icon-button [matMenuTriggerFor]="menu"#menuTrigger="matMenuTrigger"  aria-label="Actions">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <a mat-menu-item [routerLink]="['/crew', crew.id]">
+                  <mat-icon>visibility</mat-icon>
+                  <span>{{ 'CREW_LIST.VIEW_CARD' | translate }}</span>
+                </a>
+                <button mat-menu-item (click)="openCrewForm(crew)">
+                  <mat-icon>edit</mat-icon>
+                  <span>{{ 'CREW_LIST.EDIT' | translate }}</span>
+                </button>
+                <button mat-menu-item (click)="confirmDelete(crew)">
+                  <mat-icon>delete</mat-icon>
+                  <span>{{ 'CREW_LIST.DELETE' | translate }}</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+  
+  
+    </div>
+  </div>
+  
+
+
+
