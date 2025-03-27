@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Input } from '@angular/core';
+import { Component, Inject, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { ReactiveFormsModule,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Crew } from '../../models/crew';
@@ -43,6 +43,7 @@ export class CrewFormComponent implements OnInit {
     private crewService: CrewService,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<CrewFormComponent>,
+    private cdRef: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA) public data: { crew?: Crew }
   ) {
     this.crewForm = this.fb.group({
@@ -98,6 +99,7 @@ export class CrewFormComponent implements OnInit {
       }
 
       this.dialogRef.close(crewData);
+      setTimeout(() => this.cdRef.detectChanges());
     }
   }
 }

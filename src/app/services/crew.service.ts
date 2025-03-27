@@ -100,6 +100,7 @@ export class CrewService {
       crew.certificates = [];
     }
     this.crewSubject.next([...crews, crew]);
+    console.log("Updated Crew List:", this.crewSubject.value);
   }
 
   updateCrew(crew: Crew): void {

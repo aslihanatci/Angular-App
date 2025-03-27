@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CertificateType } from '../../models/certificate-type';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import { CertificateListDialogComponent } from '../../certificate-list-dialog/certificate-list-dialog.component';
 
 @Component({
   selector: 'app-crew-list',
@@ -65,7 +66,8 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   constructor(
     private crewService: CrewService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -78,8 +80,10 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   }
 
   loadCrewData(): void {
-    this.crewService.getCrew().subscribe((data: any) => {
-      this.dataSource.data = data;
+    this.crewService.getCrew().subscribe((crews: Crew[]) => {
+      this.dataSource = new MatTableDataSource(crews);
+      this.cdRef.detectChanges();
+      this.dataSource.paginator = this.paginator;
     });
   }
 
@@ -111,27 +115,16 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   openCrewForm(crew?: Crew): void {
     const dialogRef = this.dialog.open(CrewFormComponent, {
       width: '600px',
+      disableClose: true, 
+      restoreFocus: false,
       data: { crew }
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.loadCrewData(); 
+      }
     });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     if (result.id === 0) {
-    //       // Yeni crew ekleniyor
-    //       this.crewService.addCrew(result).subscribe(() => {
-    //         this.snackBar.open('Tayfa başarıyla eklendi.', 'Tamam', { duration: 3000 });
-    //         this.loadCrewData();  // Yeni crew eklendikten sonra veriyi tekrar yükle
-    //       });
-    //     } else {
-    //       // Var olan crew güncelleniyor
-    //       this.crewService.updateCrew(result).subscribe(() => {
-    //         this.snackBar.open('Tayfa bilgileri güncellendi.', 'Tamam', { duration: 3000 });
-    //         this.loadCrewData();  // Güncel verileri tekrar yükle
-    //       });
-    //     }
-    //   }
-    // });
   }
+
 
   openCertificateForm(certificateType?: CertificateType): void {
     const dialogRef = this.dialog.open(CertificateTypeFormComponent, {
@@ -140,6 +133,12 @@ export class CrewListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  openCertificateDialog(crew: Crew): void {
+    this.dialog.open(CertificateListDialogComponent, {
+      width: '600px',
+      data: { crew: crew }
+    });
+  }
 
 
 
