@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>
-  {{ 'CERTIFICATE_TYPE.TITLE' | translate }}
+  {{ (data.certificateType ? 'CERTIFICATE_TYPE.EDIT' : 'CERTIFICATE_TYPE.ADD') | translate }}
 </h2>
 <mat-dialog-content>
   <form [formGroup]="certificateTypeForm" class="certificate-type-form">

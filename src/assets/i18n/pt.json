@@ -58,6 +58,7 @@
     "CERTIFICATE_TYPE": {  
       "TITLE": "Tipos de Certificado",
       "ADD": "Adicionar Tipo de Certificado",
+      "EDIT": "Edit Certificate Type",
       "NAME": "Nome",
       "DESCRIPTION": "Descrição",
       "SAVE": "Salvar",

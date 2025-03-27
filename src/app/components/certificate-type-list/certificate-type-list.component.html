@@ -1,6 +1,6 @@
 <div class="crew-list-container">
     <div class="header-actions">
-      <h2>{{ 'CREW_LIST.TITLE' | translate }}</h2>
+      <h2>{{ 'CERTIFICATE_TYPE.TITLE' | translate }}</h2>
       <div class="button-group">
         <button mat-raised-button color="primary" (click)="openCertificateForm()" >
           <mat-icon>add</mat-icon>
@@ -14,30 +14,26 @@
           
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CERTIFICATE_TYPE.NAME' | translate }}</th>
-          <td mat-cell *matCellDef="let crew"> {{crew.firstName}} </td>
+          <td mat-cell *matCellDef="let certificateType"> {{certificateType.name}} </td>
         </ng-container>
   
         <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ 'CERTIFICATE_TYPE.DESCRIPTION' | translate }}</th>
-          <td mat-cell *matCellDef="let crew"> {{crew.lastName}} </td>
+          <td mat-cell *matCellDef="let certificateType"> {{certificateType.description}} </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef>{{ 'CREW_LIST.ACTIONS' | translate }}</th>
-            <td mat-cell *matCellDef="let crew">
+            <td mat-cell *matCellDef="let certificateType">
               <button mat-icon-button [matMenuTriggerFor]="menu"#menuTrigger="matMenuTrigger"  aria-label="Actions">
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <a mat-menu-item [routerLink]="['/crew', crew.id]">
-                  <mat-icon>visibility</mat-icon>
-                  <span>{{ 'CREW_LIST.VIEW_CARD' | translate }}</span>
-                </a>
-                <button mat-menu-item (click)="openCrewForm(crew)">
+                <button mat-menu-item (click)="openCertificateForm(certificateType)">
                   <mat-icon>edit</mat-icon>
                   <span>{{ 'CREW_LIST.EDIT' | translate }}</span>
                 </button>
-                <button mat-menu-item (click)="confirmDelete(crew)">
+                <button mat-menu-item (click)="confirmDelete(certificateType)">
                   <mat-icon>delete</mat-icon>
                   <span>{{ 'CREW_LIST.DELETE' | translate }}</span>
                 </button>

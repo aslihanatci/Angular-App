@@ -27,23 +27,30 @@ export class CertificateTypeService {
     return of(certificateType);
   }
 
-  addCertificateType(certificateType: CertificateType): void {
+  addCertificateType(certificateType: CertificateType): Observable<CertificateType> {
     const certificateTypes = this.certificateTypesSubject.value;
     certificateType.id = this.nextId++;
-    this.certificateTypesSubject.next([...certificateTypes, certificateType]);
+    const updatedList = [...certificateTypes, certificateType]; 
+    this.certificateTypesSubject.next(updatedList); 
+    return of(certificateType); 
   }
 
-  updateCertificateType(certificateType: CertificateType): void {
+  updateCertificateType(certificateType: CertificateType): Observable<CertificateType | null> {
     const certificateTypes = this.certificateTypesSubject.value;
     const index = certificateTypes.findIndex(ct => ct.id === certificateType.id);
     if (index !== -1) {
       certificateTypes[index] = { ...certificateTypes[index], ...certificateType };
       this.certificateTypesSubject.next([...certificateTypes]);
+      return of(certificateTypes[index]);
     }
+    return of(null);
   }
 
-  deleteCertificateType(id: number): void {
+  deleteCertificateType(id: number): Observable<boolean> {
     const certificateTypes = this.certificateTypesSubject.value;
-    this.certificateTypesSubject.next(certificateTypes.filter(ct => ct.id !== id));
+    const filteredList = certificateTypes.filter(ct => ct.id !== id);
+    const isDeleted = filteredList.length !== certificateTypes.length; 
+    this.certificateTypesSubject.next(filteredList); 
+    return of(isDeleted); 
   }
 }

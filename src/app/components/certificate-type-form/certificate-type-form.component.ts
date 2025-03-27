@@ -43,13 +43,18 @@ export class CertificateTypeFormComponent implements OnInit {
     private certificateTypeService: CertificateTypeService,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<CertificateTypeFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: { certificateType?: CertificateType}
 
   ) {
     this.certificateTypeForm = this.fb.group({
       name: ['', Validators.required],
       description: ['']
     });
+
+    if (data.certificateType) {
+      this.certificateTypeForm.patchValue(data.certificateType);
+    }
+
   }
 
   ngOnInit(): void {
@@ -61,6 +66,10 @@ export class CertificateTypeFormComponent implements OnInit {
       name: ['', Validators.required],
       description: ['']
     });
+
+    if (this.data.certificateType) {
+      this.certificateTypeForm.patchValue(this.data.certificateType);
+    }
   }
 
 
