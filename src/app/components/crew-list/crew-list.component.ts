@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CertificateType } from '../../models/certificate-type';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { CertificateListDialogComponent } from '../../certificate-list-dialog/certificate-list-dialog.component';
 
@@ -52,7 +53,8 @@ import { CertificateListDialogComponent } from '../../certificate-list-dialog/ce
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.scss'
@@ -60,7 +62,7 @@ import { CertificateListDialogComponent } from '../../certificate-list-dialog/ce
 export class CrewListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Crew>([]);
   crewList: Crew[] = [];
-  displayedColumns: string[] = ['actions', 'firstName', 'lastName', 'nationality', 'title', 'daysOnBoard', 'dailyRate', 'currency', 'totalIncome', 'certificates'];
+  displayedColumns: string[] = ['actions', 'firstName', 'lastName', 'nationality', 'title', 'daysOnBoard', 'dailyRate', 'currency', 'discount', 'totalIncome', 'certificates'];
   currencyTotals: { [currency: string]: number } = {};
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -92,6 +94,10 @@ export class CrewListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  onDiscountChange(crew: Crew) {
+    this.calculateTotalIncomeByCurrency();
+  }
+
   calculateTotalIncomeByCurrency(): void {
     this.currencyTotals = {};
     
@@ -106,7 +112,13 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   }
 
   getTotalIncome(crew: Crew): number {
-    return this.crewService.calculateTotalIncome(crew);
+    let totalIncome = this.crewService.calculateTotalIncome(crew);
+
+    if (crew.discount) {
+      totalIncome -= (totalIncome * crew.discount) / 100; 
+    }
+
+    return totalIncome;
   }
 
   getCertificateCount(crew: Crew): number {

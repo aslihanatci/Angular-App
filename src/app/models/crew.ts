@@ -8,7 +8,8 @@ export interface Crew {
     title: string;
     daysOnBoard: number;
     dailyRate: number;
-    currency: 'USD' | 'EUR';
+    currency: string;
+    discount?: number;
     certificates?: Certificate[];
   }
   

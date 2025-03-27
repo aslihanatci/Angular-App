@@ -46,6 +46,13 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'CREW_LIST.CURRENCY' | translate }} </th>
           <td mat-cell *matCellDef="let crew"> {{crew.currency}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="discount">
+          <th mat-header-cell *matHeaderCellDef>{{ 'CREW_LIST.DISCOUNT' | translate }}</th>
+          <td mat-cell *matCellDef="let crew">
+            <input type="number" [(ngModel)]="crew.discount" (input)="onDiscountChange(crew)" />
+          </td>
+        </ng-container>
   
         <ng-container matColumnDef="totalIncome">
           <th mat-header-cell *matHeaderCellDef> {{ 'CREW_LIST.TOTAL_INCOME' | translate }}</th>

@@ -18,7 +18,8 @@
       "EDIT": "Modifier",
       "DELETE": "Supprimer",
       "VIEW_CARD": "Voir la Carte",
-      "TOTALS": "Totaux"
+      "TOTALS": "Totaux",
+      "DISCOUNT" : "DISCOUNT"
     },
     "CREW_FORM": {
       "ADD_TITLE": "Ajouter un Nouveau Membre d'Équipage",

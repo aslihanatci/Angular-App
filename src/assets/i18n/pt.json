@@ -18,7 +18,8 @@
       "EDIT": "Editar",
       "DELETE": "Excluir",
       "VIEW_CARD": "Ver Cartão",
-      "TOTALS": "Totais"
+      "TOTALS": "Totais",
+      "DISCOUNT" : "DISCOUNT"
     },
     "CREW_FORM": {
       "ADD_TITLE": "Adicionar Novo Tripulante",

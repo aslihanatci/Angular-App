@@ -18,7 +18,8 @@
       "EDIT": "Edit",
       "DELETE": "Delete",
       "VIEW_CARD": "View Card",
-      "TOTALS": "Totals"
+      "TOTALS": "Totals",
+      "DISCOUNT" : "DISCOUNT"
     },
     "CREW_FORM": {
       "ADD_TITLE": "Add New Crew Member",
