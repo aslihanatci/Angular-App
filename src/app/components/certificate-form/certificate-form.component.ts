@@ -9,6 +9,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-certificate-form',
@@ -18,7 +22,11 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatDatepickerModule,
     MatSelectModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    CommonModule,
+    MatInputModule, 
+    MatButtonModule,
+    MatNativeDateModule
   ],
   templateUrl: './certificate-form.component.html',
   styleUrl: './certificate-form.component.scss'
@@ -31,7 +39,7 @@ export class CertificateFormComponent implements OnInit{
     private fb: FormBuilder,
     private certificateTypeService: CertificateTypeService,
     public dialogRef: MatDialogRef<CertificateFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: { certificate? : Certificate }
   ) {
     this.certificateForm = this.fb.group({
       certificateTypeId: ['', Validators.required],
@@ -47,7 +55,6 @@ export class CertificateFormComponent implements OnInit{
 
   save(): void {
     if (this.certificateForm.valid) {
-      // Sertifika tipi adını eklemek için
       this.certificateTypeService.getCertificateTypeById(this.certificateForm.value.certificateTypeId)
         .subscribe((certificateType: CertificateType | undefined) => {
           if (certificateType) {
@@ -58,7 +65,6 @@ export class CertificateFormComponent implements OnInit{
             
             this.dialogRef.close(certificate);
           } else {
-            // certificateType undefined ise yapılacak işlem
             console.error('Sertifika tipi bulunamadı.');
           }
         });
