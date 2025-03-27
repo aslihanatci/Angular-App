@@ -56,7 +56,7 @@ import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dial
 })
 export class CrewListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Crew>([]);
-  displayedColumns: string[] = ['actions', 'firstName', 'lastName', 'nationality', 'title', 'daysOnBoard', 'dailyRate', 'currency', 'certificates'];
+  displayedColumns: string[] = ['actions', 'firstName', 'lastName', 'nationality', 'title', 'daysOnBoard', 'dailyRate', 'currency', 'totalIncome', 'certificates'];
 
 
   @ViewChild(MatSort) sort!: MatSort;
