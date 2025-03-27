@@ -26,6 +26,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CertificateType } from '../../models/certificate-type';
+import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { CertificateListDialogComponent } from '../../certificate-list-dialog/certificate-list-dialog.component';
 
@@ -50,15 +51,17 @@ import { CertificateListDialogComponent } from '../../certificate-list-dialog/ce
     MatExpansionModule,
     MatCardModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    CommonModule
   ],
   templateUrl: './crew-list.component.html',
   styleUrl: './crew-list.component.scss'
 })
 export class CrewListComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Crew>([]);
+  crewList: Crew[] = [];
   displayedColumns: string[] = ['actions', 'firstName', 'lastName', 'nationality', 'title', 'daysOnBoard', 'dailyRate', 'currency', 'totalIncome', 'certificates'];
-
+  currencyTotals: { [currency: string]: number } = {};
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -82,8 +85,23 @@ export class CrewListComponent implements OnInit, AfterViewInit {
   loadCrewData(): void {
     this.crewService.getCrew().subscribe((crews: Crew[]) => {
       this.dataSource = new MatTableDataSource(crews);
+      this.crewList = crews;
       this.cdRef.detectChanges();
       this.dataSource.paginator = this.paginator;
+      this.calculateTotalIncomeByCurrency();
+    });
+  }
+
+  calculateTotalIncomeByCurrency(): void {
+    this.currencyTotals = {};
+    
+    this.crewList.forEach((crew: Crew) => {
+      const totalIncome = this.getTotalIncome(crew); 
+      if (this.currencyTotals[crew.currency]) {
+        this.currencyTotals[crew.currency] += totalIncome; 
+      } else {
+        this.currencyTotals[crew.currency] = totalIncome; 
+      }
     });
   }
 

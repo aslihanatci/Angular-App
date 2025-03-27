@@ -92,6 +92,11 @@
       aria-label="Select page of periodic elements">
     </mat-paginator>
   
+    <div class="currency-totals">
+      <div *ngFor="let currency of currencyTotals | keyvalue">
+        <p>{{ currency.key }}: {{ currency.value | currency: currency.key }}</p>
+      </div>
+    </div>
   
     </div>
   </div>
