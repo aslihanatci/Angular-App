@@ -10,7 +10,13 @@
   
     .mat-option {
       white-space: nowrap !important;
-      overflow: visible !important;
+      overflow: hidden !important;
       text-overflow: clip !important;
+    }
+
+    .cdk-overlay-pane {
+      min-width: 200px !important;
+      max-width: none !important;
+      white-space: nowrap !important;
     }
   }

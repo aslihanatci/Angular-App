@@ -5,5 +5,5 @@ export interface Certificate {
     issueDate: Date;
     expiryDate: Date;
     crewId?: number;
-    name: string;
+    name?: string;
   }

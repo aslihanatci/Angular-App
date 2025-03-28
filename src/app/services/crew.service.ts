@@ -20,8 +20,8 @@ export class CrewService {
       dailyRate: 150,
       currency: 'USD',
       certificates: [
-        { id: 1, name: 'Kaptan Lisansı', issueDate: new Date('2020-01-15'), expiryDate: new Date('2025-01-15') },
-        { id: 2, name: 'İlk Yardım Sertifikası', issueDate: new Date('2021-03-20'), expiryDate: new Date('2026-03-20') }
+        { id: 1, certificateTypeName: 'Kaptan Lisansı', issueDate: new Date('2020-01-15'), expiryDate: new Date('2025-01-15') },
+        { id: 2, certificateTypeName: 'İlk Yardım Sertifikası', issueDate: new Date('2021-03-20'), expiryDate: new Date('2026-03-20') }
       ]
     },
     {
@@ -34,7 +34,7 @@ export class CrewService {
       dailyRate: 130,
       currency: 'USD',
       certificates: [
-        { id: 3, name: 'Mühendislik Lisansı', issueDate: new Date('2019-05-10'), expiryDate: new Date('2024-05-10') }
+        { id: 3, certificateTypeName: 'Mühendislik Lisansı', issueDate: new Date('2019-05-10'), expiryDate: new Date('2024-05-10') }
       ]
     },
     {
@@ -47,8 +47,8 @@ export class CrewService {
       dailyRate: 120,
       currency: 'EUR',
       certificates: [
-        { id: 4, name: 'Denizcilik Sertifikası', issueDate: new Date('2022-02-05'), expiryDate: new Date('2027-02-05') },
-        { id: 5, name: 'Güvenlik Eğitimi', issueDate: new Date('2022-04-15'), expiryDate: new Date('2027-04-15') }
+        { id: 4, certificateTypeName: 'Denizcilik Sertifikası', issueDate: new Date('2022-02-05'), expiryDate: new Date('2027-02-05') },
+        { id: 5, certificateTypeName: 'Güvenlik Eğitimi', issueDate: new Date('2022-04-15'), expiryDate: new Date('2027-04-15') }
       ]
     },
     {
@@ -61,7 +61,7 @@ export class CrewService {
       dailyRate: 100,
       currency: 'USD',
       certificates: [
-        { id: 6, name: 'Güverte Zabiti Lisansı', issueDate: new Date('2021-08-20'), expiryDate: new Date('2026-08-20') }
+        { id: 6, certificateTypeName: 'Güverte Zabiti Lisansı', issueDate: new Date('2021-08-20'), expiryDate: new Date('2026-08-20') }
       ]
     },
     {
@@ -74,8 +74,8 @@ export class CrewService {
       dailyRate: 110,
       currency: 'EUR',
       certificates: [
-        { id: 7, name: 'Makine Operatörü Lisansı', issueDate: new Date('2020-11-30'), expiryDate: new Date('2025-11-30') },
-        { id: 8, name: 'Teknik Bakım Sertifikası', issueDate: new Date('2021-05-25'), expiryDate: new Date('2026-05-25') }
+        { id: 7, certificateTypeName: 'Makine Operatörü Lisansı', issueDate: new Date('2020-11-30'), expiryDate: new Date('2025-11-30') },
+        { id: 8, certificateTypeName: 'Teknik Bakım Sertifikası', issueDate: new Date('2021-05-25'), expiryDate: new Date('2026-05-25') }
       ]
     }
   ]);
@@ -100,7 +100,6 @@ export class CrewService {
       crew.certificates = [];
     }
     this.crewSubject.next([...crews, crew]);
-    console.log("Updated Crew List:", this.crewSubject.value);
   }
 
   updateCrew(crew: Crew): void {

@@ -65,7 +65,7 @@ export class CertificateFormComponent implements OnInit{
             
             this.dialogRef.close(certificate);
           } else {
-            console.error('Sertifika tipi bulunamadı.');
+            console.error('Certificate Type Not Found.');
           }
         });
     }
